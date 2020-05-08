@@ -16,7 +16,7 @@
 
 BOARD_VENDOR := realme
 
-DEVICE_PATH := device/realme/RMX1911
+COMMON_PATH := device/realme/sdm665-common
 
 TARGET_USE_SDCLANG := true
 
@@ -50,12 +50,10 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_ARCH := arm64
-#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
+#TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/Image.gz-dtb
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CLANG_VERSION := 9.0.6
-TARGET_KERNEL_CONFIG := vendor/trinket-perf_defconfig
-TARGET_KERNEL_SOURCE := kernel/realme/RMX1911
 endif
 
 BOARD_ROOT_EXTRA_SYMLINKS := \
@@ -76,7 +74,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth/include
 
 # Treble
 BOARD_VNDK_VERSION := current
@@ -116,15 +114,15 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_TAP_TO_WAKE_NODE := "proc/touchpanel/double_tap_enable"
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 
 # Device Sepolicy
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 # QCOM Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/qcom/sepolicy/private
@@ -139,4 +137,4 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
 # Inherit from the proprietary version
--include vendor/realme/RMX1911/BoardConfigVendor.mk
+-include vendor/realme/sdm665-common/BoardConfigVendor.mk

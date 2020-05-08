@@ -20,7 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/realme/RMX1911/RMX1911-vendor.mk)
+$(call inherit-product-if-exists, vendor/realme/sdm665-common/sdm665-common-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
